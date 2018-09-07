@@ -12,7 +12,8 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(0deg, #d8d8d8, #ececec);
-  border-bottom: 1px thin rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
   border-radius: 7px 7px 0 0;
   min-height: 30px;
   padding: 0 5px;

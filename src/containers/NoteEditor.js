@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import NoteEditor from '../components/NoteEditor';
 import { updateNote } from '../reducers/notes';
-import { getActiveNoteId } from '../selectors';
+import { getActiveNoteId, getActiveNote } from '../selectors';
 
 const mapStateToProps = state => {
   const activeNoteId = getActiveNoteId(state);
-  const note = state.notes && state.notes.find(note => note.id === activeNoteId);
+  const note = getActiveNote(state);
   
   return {
     note,
+    activeNoteId,
   };
 }
 

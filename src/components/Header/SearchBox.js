@@ -4,7 +4,7 @@ import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-  border: 1px solid lightgray;
+  border-bottom: 1px solid #b1aeb1;
   background: white;  
   position: relative;
   width: 200px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-  border: 1px solid lightgray;
+  border-bottom: 1px solid #b1aeb1;
   background: white;  
   display: flex;
   justify-content: center;

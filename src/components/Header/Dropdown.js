@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const StyleDropdown = styled.div`
   z-index: 2000;
-  border: 1px solid lightgray;
+  border-top: 1px solid #f3f1f3;
+  border-bottom: 1px solid #b1aeb1;
   background: white;  
   box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.5);
   padding: 10px 0;
@@ -31,7 +32,7 @@ const DropdownItem = styled.div`
   padding: 5px 15px;
   color: #333;
   cursor: pointer;
-  min-width: 80px;
+  min-width: 100px;
 
   &:hover {
     color: white;

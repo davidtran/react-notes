@@ -15,7 +15,7 @@ const Container = styled.div`
   height: 500px;
   max-height: 80%;
   box-shadow: 0 18px 55px rgba(0, 0, 0, 0.2);  
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #acacac;
   border-radius: 7px; 
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ const Container = styled.div`
 
 const Main = styled.div`
   display: flex;  
-  background: #f5f5f5;
+  background: #fafaf8;
   flex-grow: 1;
   position: relative;
 `;

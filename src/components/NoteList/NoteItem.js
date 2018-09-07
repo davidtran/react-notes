@@ -7,6 +7,7 @@ import Highlighter from 'react-highlighter';
 const Container = styled.div`
   padding: 10px 10px 10px 25px;  
   position: relative;
+  cursor: pointer;
 
   ::after {
     content: '';
@@ -15,21 +16,37 @@ const Container = styled.div`
     width: 100%;
     left: 20px;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.1);
+    background: #ededeb;
   }
 
   ${props => props.isActive && css`
-    background-color: yellow;
+    ::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      background-color: #fde18d;  
+      z-index: 5;
+    }    
   `}
+`;
+
+const Content = styled.div`
+  position: relative;
+  z-index: 10;
 `
 
 const Title = styled.div`
+  position: relative;
   font-size: 14px;
   font-weight: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 3px;
+  z-index: 10;
 `;
 
 const Info = styled.div`
@@ -64,7 +81,7 @@ const getDateText = date => {
 const getTitleAndDescription = noteContent => {
   const content = noteContent.getCurrentContent().getPlainText();
   const textArray = content.split('\n');
-  const title = textArray[0] !== '' ? textArray[0] : null ;
+  const title = textArray[0] !== '' ? textArray[0] : null;
   const description = textArray.length > 0 && textArray[1] || null;
   return { title, description };
 }
@@ -73,27 +90,29 @@ const NoteItem = ({ note, isActive, onClick, searchKeyword }) => {
   const { title, description } = getTitleAndDescription(note.content);
 
   return (
-    <Container 
-      isActive={isActive} 
+    <Container
+      isActive={isActive}
       onMouseDown={(e) => {
-        e.stopPropagation();         
+        e.stopPropagation();
         onClick(note.id);
       }}
     >
-      <Title>
-        <Highlighter search={title && searchKeyword}>
-          {title || 'New Note'}
-        </Highlighter>
-        
-      </Title>
-      <Info>
-        <Date>{getDateText(note.updatedAt)}</Date>
-        <Description>
-          <Highlighter search={description && searchKeyword}>
-            {description || 'No addition text'}
+      <Content>
+        <Title>
+          <Highlighter search={title && searchKeyword}>
+            {title || 'New Note'}
           </Highlighter>
-        </Description>
-      </Info>
+
+        </Title>
+        <Info>
+          <Date>{getDateText(note.updatedAt)}</Date>
+          <Description>
+            <Highlighter search={description && searchKeyword}>
+              {description || 'No addition text'}
+            </Highlighter>
+          </Description>
+        </Info>
+      </Content>
     </Container>
   );
 }

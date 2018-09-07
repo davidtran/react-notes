@@ -26,6 +26,7 @@ export default class NoteEditor extends Component {
   };
 
   componentDidUpdate(prevProps) {
+    console.log(prevProps, this.props);
     if (prevProps.note.id !== this.props.note.id) {
       this.editorEl.focus();
     }
@@ -95,4 +96,5 @@ export default class NoteEditor extends Component {
 NoteEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   note: PropTypes.object.isRequired,
+  activeNoteId: PropTypes.string,
 };
