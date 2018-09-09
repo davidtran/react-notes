@@ -1,3 +1,5 @@
+import { getSortedNotes } from "../selectors";
+
 const SET_SEARCH_KEYWORD = 'SET_SEARCH_KEYWORD';
 const SET_SEARCH_CACHE_RESULT = 'SET_SEARCH_CACHE_RESULT';
 
@@ -5,14 +7,14 @@ function filterNotes(notes, keyword) {
   if (!keyword || keyword.length === 0) return notes;
   return notes.filter(note => {
     const text = note.content.getCurrentContent().getPlainText();
-    return text.toLowerCase().indexOf(keyword.toLowerCase()) >= 0
+    return text.toLowerCase().indexOf(keyword.toLowerCase()) >= 0;
   });
 }
 
 export const toggleSearchKeyword = keyword => (dispatch, getState) =>{
   if (keyword && keyword.length > 0) {
     dispatch(setSearchKeyword(keyword));
-    const notes = getState().notes;
+    const notes = getSortedNotes(getState());
     const filteredResult = filterNotes(notes, keyword)
     dispatch(setSearchCacheResult(filteredResult));
   } else {
